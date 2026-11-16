@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Розміри й одиниці · урок 15 — Технічне проектування</title>
+<meta name="description" content="Сторінку, яку справді можна читати: текст обмежений по ширині, розмір нормальний, блоки потрібного розміру — і жоден текст не вилазить за свій блок.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <a class="brand" href="../index.html">Технології</a>
+  <nav><a href="../index.html#uroky">Уроки</a><a href="../proekt.html">Підсумковий проект</a></nav>
+</div></div>
+<header class="lhead"><div class="wrap">
+  <div class="crumbs"><a href="../index.html">Усі уроки</a> · Урок 15 · Заготовка з готовими даними</div>
+  <h1>Розміри й одиниці</h1>
+  <p class="sub">Технічне проектування · Шемегон С. В. · заготовка до уроку 15</p>
+  <div class="intro"><p>Шпаргалка на урок і все потрібне для домашнього.</p><p>Поруч лежать <code>index.html</code> і <code>style.css</code> у стані після уроку 14. Беріть їх, якщо свого файлу немає або щось зламалось.</p></div>
+</div></header>
+<main><div class="wrap layout">
+<aside>
+  <div class="box"><h4>Файли уроку</h4><ul class="files"><li><a href="faily/urok-15-prezentatsiia.pptx" download><span class="i">▶</span><span>Презентація<small>.pptx · 328 КБ</small></span></a></li><li><a href="faily/urok-15-samostiino.docx" download><span class="i">✎</span><span>Самостійне опрацювання<small>.docx · 8 КБ</small></span></a></li><li><a href="faily/urok-15-zagotovka.docx" download><span class="i">▣</span><span>Заготовка з готовими даними<small>.docx · 5 КБ</small></span></a></li></ul></div>
+  <div class="box"><h4>Код проекту</h4><ul class="files"><li><a href="kod/index.html" target="_blank"><span class="i">◧</span><span>index.html<small>відкрити в браузері · 2 КБ</small></span></a></li><li><a href="kod/style.css" download><span class="i">{ }</span><span>style.css<small>завантажити · 1 КБ</small></span></a></li></ul></div>
+  <div class="box"><h4>Ще на сайті</h4><ul class="files"><li><a href="index.html"><span class="i">✎</span><span>Матеріал уроку<small>читати на сайті</small></span></a></li></ul></div>
+  <div class="box toc-box"><h4>Зміст</h4><ol class="toc"><li><a href="#p1">Частина 1. Три властивості і чотири межі</a></li><li><a href="#p2">Частина 2. Чотири одиниці</a></li><li><a href="#p3">Частина 3. Що коли брати</a></li><li><a href="#p4">Частина 4. Приклад</a></li><li><a href="#p5">Коли не працює</a></li><li><a href="#p6">Що здати</a></li></ol></div>
+</aside>
+<div>
+<article>
+<section class="sec" id="p1"><h2>Частина 1. Три властивості і чотири межі</h2>
+<pre>width: 300px;         ширина
+height: 100px;        висота
+font-size: 18px;      розмір тексту
+ 
+min-width: 200px;     «не вужче за»
+max-width: 800px;     «не ширше за»
+min-height: 100px;    «не нижче за»
+max-height: 300px;    «не вище за»</pre>
+<h3>Ширина</h3>
+<ul><li>Задають, коли треба. Блоковий елемент без неї займає всю доступну ширину.</li><li>На <strong>рядкових</strong> (<code>span</code>, <code>strong</code>, <code>em</code>, <code>a</code>) не працює — вони займають рівно стільки, скільки треба під вміст.</li></ul>
+<h3>Висота</h3>
+<ul><li><strong>Майже ніколи не задають.</strong> Хай браузер сам підбере під вміст.</li><li>Задали висоту, а текст виявився довшим — він вилізе за межі блока. Виглядає зламано, а помилки ніде немає.</li><li>Просте правило: ширину задаємо, коли треба. Висоту лишаємо браузеру.</li><li>Треба, щоб блок був не нижчим за число, — <strong><code>min-height</code></strong>. Тексту мало — блок рівно стільки, тексту багато — росте. Підлога, а не стеля.</li></ul>
+<h3>max-width — найкорисніше за урок</h3>
+<pre>body {
+  max-width: 800px;
+}</pre>
+<ul><li>Читається як «не ширше за». На великому екрані блок зупиниться, на малому стисне себе сам.</li><li>Чим кращий за <code>width</code>: фіксована ширина на вузькому екрані вилізе за межі, <code>max-width</code> — ніколи.</li><li>Один рядок у <code>body</code> — і довгий рядок тексту перестає бути проблемою.</li></ul>
+<h3>Чотири межі</h3>
+<pre>                 ПІДЛОГА              СТЕЛЯ
+ 
+ширина     min-width             max-width
+           не вужче за           не ширше за
+ 
+висота     min-height            max-height
+           не нижче за           не вище за</pre>
+<ul><li><strong>max-width</strong> і <strong>min-height</strong> — ті, що знадобляться в проекті найчастіше.</li><li><strong>min-width</strong> — щоб кнопка з коротким словом не стала крихітною. Число скромне, інакше на телефоні вилізе.</li><li><strong>max-height</strong> — майже не беруть: довгий текст вилізе, як і з <code>height</code>.</li><li>Можна разом: <code>min-width: 200px; max-width: 400px;</code>. Мінімум більший за максимум — переможе мінімум.</li></ul>
+<h3>Розмір тексту</h3>
+<ul><li>16–18 пікселів для основного тексту. Менше — людина просто не читає.</li><li>Задайте у <code>body</code> — усе всередині успадкує розмір від батька. Писати кожному тегу не треба.</li></ul>
+</section>
+<section class="sec" id="p2"><h2>Частина 2. Чотири одиниці</h2>
+<pre>px    фіксований розмір
+      20px — це 20px завжди й усюди
+ 
+%     частка від БАТЬКІВСЬКОГО блока
+      width: 50% — половина того,
+      у чому блок лежить (не екрана!)
+ 
+em    від розміру тексту ЦЬОГО елемента
+      текст 18px → 1em = 18px
+      усередині вкладень множиться
+ 
+rem   від розміру тексту ВСІЄЇ сторінки
+      не множиться, тому передбачуваний</pre>
+<h3>Головне непорозуміння з відсотками</h3>
+<pre>&lt;div class=&quot;outer&quot;&gt;      .outer { width: 600px; }
+  &lt;div class=&quot;inner&quot;&gt;    .inner { width: 50%;   }
+  &lt;/div&gt;
+&lt;/div&gt;
+ 
+inner вийде 300px — половина outer,
+а не половина екрана.</pre>
+<h3>Підступність em</h3>
+<p>Задали блоку <code>1.5em</code>, усередині ще один блок і теж <code>1.5em</code> — виходить не півтора, а два з чвертю. Другий рахується від першого.</p>
+<p><code>rem</code> так не робить ніколи. Коли вагаєтесь між ними — беріть <code>rem</code>.</p>
+</section>
+<section class="sec" id="p3"><h2>Частина 3. Що коли брати</h2>
+<ul><li><strong>px</strong> — майже завжди. Розміри тексту, ширини, рамки.</li><li><strong>max-width</strong> — для тексту, щоб рядок не розтягувався на весь монітор. Один раз у <code>body</code>.</li><li><strong>min-height</strong> — замість <code>height</code>, коли блок має бути не нижчим за число.</li><li><strong>%</strong> — коли треба саме частку. Знадобиться на уроці 19, для карток у ряд.</li><li><strong>em</strong> і <strong>rem</strong> — у цьому проекті не обов'язкові. Знайте, що існують, і впізнавайте в чужому коді.</li></ul>
+</section>
+<section class="sec" id="p4"><h2>Частина 4. Приклад</h2>
+<p>Так це виглядає разом. Наберіть руками й підберіть свої числа.</p>
+<pre>body {
+  max-width: 800px;
+  font-size: 18px;
+}
+ 
+h1 {
+  font-size: 40px;
+}
+ 
+h2 {
+  font-size: 28px;
+}
+ 
+.card {
+  width: 50%;
+}</pre>
+<p><code>max-width</code> у <code>body</code> — найважливіший рядок. Саме він робить текст читабельним.</p>
+<p>Висоти тут немає навмисно: її не задають. Знадобиться підлога — <code>min-height</code>.</p>
+</section>
+<section class="sec" id="p5"><h2>Коли не працює</h2>
+<h3>Задав розмір, а нічого не змінилось</h3>
+<ul><li>Забули одиницю: <code>width: 300</code> замість <code>width: 300px</code>. Браузер проігнорує мовчки.</li><li>Виняток — нуль: <code>margin: 0</code> пишуть без одиниці, і це нормально.</li></ul>
+<h3>Ширина не застосувалась</h3>
+<ul><li>Перевірте, чи елемент не рядковий. На <code>span</code>, <code>strong</code>, <code>em</code>, <code>a</code> ширина не працює.</li></ul>
+<h3>Текст виліз за межі блока</h3>
+<ul><li>Ви задали йому <code>height</code> або <code>max-height</code>. Приберіть — хай браузер підбере сам. Потрібна підлога — <code>min-height</code>.</li></ul>
+<h3>Відсотки дають не те, що я очікував</h3>
+<ul><li>Вони рахуються від батьківського блока, а не від екрана. Подивіться в інспекторі, якої ширини батько.</li></ul>
+<h3>На вузькому екрані блок вилазить</h3>
+<ul><li>Ви взяли <code>width</code> там, де потрібен <code>max-width</code>.</li></ul>
+<p>Застрягли більше ніж на п'ятнадцять хвилин — пишіть у Classroom або на пошту.</p>
+</section>
+<section class="sec sec-hw" id="p6"><h2>Що здати</h2>
+<ul><li><code>max-width</code> у <code>body</code> — число підберіть самі, щоб читати було зручно.</li><li><code>font-size</code> у <code>body</code>: 16 або 18 пікселів.</li><li>Одному блоку — ширина у відсотках. Звузьте вікно й подивіться.</li><li>Одним реченням: чим відсотки відрізнились від пікселів.</li></ul>
+<p>Перевірятиму: чи є <code>max-width</code>, чи текст не дрібний, чи скрізь є одиниці, чи пояснено різницю.</p>
+<p>Висоту не задавайте — тільки <code>min-height</code>. А хочете переконатись чому — задайте <code>height</code>, допишіть у той блок ще два речення й подивіться, що вийде.</p>
+</section>
+</article>
+<nav class="pager"><a href="index.html"><small>← Назад</small>Матеріал уроку 15</a></nav>
+</div>
+</div></main>
+<footer><div class="wrap">Технічне проектування · Шемегон С. В. · Питання — пишіть у Classroom, не чекаючи уроку.</div></footer>
+</body>
+</html>
