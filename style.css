@@ -25,7 +25,7 @@ main{padding:40px 0 64px}
 .module>header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:20px}
 .module h2{margin:0;font-size:24px}
 .module .note{color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(310px,100%),1fr));gap:18px}
 .card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s,border-color .15s}
 a.card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(18,20,43,.08);border-color:#C9CBE0;color:inherit}
 .num{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.08em;text-transform:uppercase}
@@ -48,7 +48,8 @@ a.card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(18,20,43,.08
 .lhead .intro p{color:#D6D8E8;margin:0 0 8px;max-width:760px}
 .crumbs{font-size:14px;color:#A0A6C4}
 .crumbs a{color:#A0A6C4}
-.layout{display:grid;grid-template-columns:270px 1fr;gap:40px;align-items:start}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);gap:40px;align-items:start}
+.layout>*{min-width:0}
 aside{position:sticky;top:20px;display:flex;flex-direction:column;gap:18px;max-height:calc(100vh - 40px);overflow-y:auto}
 .lhead code{background:#2E3358;color:#fff}
 .box{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px}
@@ -82,7 +83,7 @@ pre{font-family:Consolas,"Cascadia Code","Courier New",monospace;background:var(
 .pager .next{text-align:right}
 footer{border-top:1px solid var(--border);color:var(--muted);font-size:14px;padding:24px 0 40px}
 @media (max-width:860px){
- .layout{grid-template-columns:1fr}
+ .layout{grid-template-columns:minmax(0,1fr)}
  aside{position:static}
  .toc-box{display:none}
  article{padding:8px 20px 28px}
